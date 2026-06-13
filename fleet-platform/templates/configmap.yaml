@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fleet-config
+  namespace: {{ .Values.namespace }}
+data:
+  DB_HOST: postgres-service
+  DB_PORT: "{{ .Values.postgres.port }}"
+  DB_NAME: "{{ .Values.postgres.database }}"
+  DB_USER: "{{ .Values.postgres.user }}"
+  REDIS_HOST: redis-service
+  REDIS_PORT: "{{ .Values.redis.port }}"
+  NODE_ENV: production
+  PORT: "{{ .Values.backend.port }}"
+  CORS_ORIGIN: "http://localhost:5173"

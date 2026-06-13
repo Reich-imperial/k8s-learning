@@ -1,0 +1,6 @@
+apiVersion: v2
+name: fleet-platform
+description: Fleet management system for petroleum logistics
+type: application
+version: 0.1.0
+apiVersion: "1.0.0"
