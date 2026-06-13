@@ -4,6 +4,10 @@ kind: Ingress
 metadata:
   name: fleet-ingress
   namespace: {{ .Values.namespace }}
+  annotations:
+    kubernetes.io/ingress.class: {{ .Values.ingress.className }}
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
 spec:
   ingressClassName: {{ .Values.ingress.className }}
   rules:

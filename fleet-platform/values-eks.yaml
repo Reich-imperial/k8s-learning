@@ -1,0 +1,40 @@
+namespace: dev
+
+backend:
+  image:
+    repository: 956867427400.dkr.ecr.us-east-1.amazonaws.com/fleet-platform
+    tag: backend-latest
+    pullPolicy: Always
+  replicas: 2
+  port: 3000
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
+
+postgres:
+  image: postgres:16-alpine
+  replicas: 1
+  port: 5432
+  database: fleetdb
+  user: fleetuser
+  storage: 5Gi
+  storageClassName: gp2
+
+redis:
+  image: redis:7-alpine
+  replicas: 1
+  port: 6379
+
+ingress:
+  enabled: true
+  host: fleet.local
+  className: alb
+
+secrets:
+  dbPassword: ZmxlZXRfcGFzc3dvcmRfMjAyNA==
+  jwtSecret: Zmxld3RfandUX3MzY3JlVF9rZXk=
+  jwtRefreshSecret: ZmxlZXRfcmVmcmVzaF9zM2NyZVRfa2V5
